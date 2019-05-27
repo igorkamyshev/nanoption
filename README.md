@@ -2,7 +2,7 @@
 
 Tiny (220 bytes), zero dependency wrapper for nullable values.
 
-## TL;RD
+## TL;DR
 
 ```js
 // Without nanoption
