@@ -4,7 +4,6 @@ export declare abstract class Option<T> {
   abstract isEmpty(): this is None<T>;
   abstract map<U>(f: (value: T) => U): Option<U>;
   abstract nonEmpty(): this is Some<T>;
-  abstract orElse<U extends T>(alternative: Option<U>): Option<T> | Option<U>;
   abstract toString(): string;
   static of<T = {}>(value?: null | undefined): None<T>;
   static of<T>(value?: T): Some<T>;
