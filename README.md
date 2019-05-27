@@ -1,6 +1,6 @@
 # nanoption
 
-Zero dependency, tiny (220 bytes) wrapper for nullable values.
+Tiny (220 bytes), zero dependency wrapper for nullable values.
 
 ## TL;RD
 

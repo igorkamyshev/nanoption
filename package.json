@@ -30,5 +30,14 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "description": "Tiny (220 bytes), zero dependency wrapper for nullable values",
+  "repository": "git@github.com:igorkamyshev/nanoption.git",
+  "author": "Igor Kamyshev <igor@kamyshev.me>",
+  "keywords": [
+    "option",
+    "nullable",
+    "null",
+    "undefined"
+  ]
 }
