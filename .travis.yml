@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- '8'
+- '10'
+- '12'
+cache: yarn
+script: yarn ci
+deploy:
+  provider: npm
+  email: igor@kamyshev.me
+  skip_cleanup: true
+  api_key:
+    secure: wpvn1+gHH+u4gwi9EyoRUTmbq1zEBOAmUGw01feGhWl8QIgJck8JcLEqW1E3JEvLow2e2qBddYS75Pseatvv3SvzIoHpNFaArIto73bKGdT4FF4ximvmHso6v0Q9vn1xVpipYq/Bh1ZsSlfHV4u7CQW1bSnQFD10uRBvwlNa39d8poof5gyY+cTvNNHU3+RZnrnsAzbP915YbWy2g2//otPkzs7dnvd8A5Afjb5z1w03GP+dkqpIiEnSLE/jfhZFYrZyuyoZz7yCqtnld1xywjEi+k1M8LUiO0a0KkV52miEWiqtnk/jd1zCFyP1EhMyZF1vtdr+O2WLOnymfBUfELgvSzH5wvi33lm5XQBlg4r9mrOS24tskrQgfGJ07swlAIWf0fr6+9KcwbQ1BTjJYnrCPG2VWoKko7G8tIhE1USTgJJhI8LKw3WOD7Q/Ykf4q59RNBkCLY+xaWEM9vw4PsBzs47F5WvMl0d2oKLBWTSazp4/1+Rq77k1Yw2VN4zoD9lgre8OpUZ2vzo9VpGCi1BgC8xR0Wj/K7YHmHzzFA8Rlqdw9TfKLUbRraWUf5VBQTPD4Gf6nr+7uqOl9HRjy4yOc5ARsNmEN5BdoCmJ8haLJT7IvUJd7s07DcDHiTSVUQHL4Rz4YKkhNXnYeUbUHA/jqGFMhviUa3IwFimhEn0=
+  on:
+    tags: true
+    repo: igorkamyshev/nanoption
