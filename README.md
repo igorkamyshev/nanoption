@@ -5,22 +5,40 @@ Tiny (220 bytes), zero dependency wrapper for nullable values.
 ## TL;DR
 
 ```js
-// Without nanoption
-const parsedInput = nullableVar != null
-  ? parseInt(nullableVar) + 12
-  : 1
-
-calculate(parsedInput)
-
 // With nanoption
 import { Option } from 'nanoption'
 
-const parsedInput = Option.of(nullableVar)
-  .map(v => parseInt(v))
-  .map(v => v + 12)
-  .getOrElse(1)
+function getJwtToken(executionContext) {
+  const jwtToken = Option.of(executionContext)
+    .map(context => context.switchToHttp()) // context can have no http mod (e.g. WebSocket)
+    .map(httpMod => httpMod.getRequest())   // context can have no http request
+    .map(request => request.headers)        // request can have no headers
+    .map(headers => headers.authorizarion)  // headers can have no auth header
+    .map(jwtAuth => jwtAuth.split(' ')[1])  // auth header can contain only one part
+    .getOrElse('')
 
-calculate(parsedInput)
+  return jwtToken
+}
+
+// Without nanoption
+function getJwtToken(executionContext) {
+  const httpMod = executionContext.switchToHttp()
+  if (!httpMod) return ''  // context can have no http mod (e.g. WebSocket)
+
+  const request = httpMod.getRequest()
+  if (!request) return ''  // context can have no http request
+
+  const headers = request.headers
+  if (!headers) return ''  // request can have no headers
+
+  const jwtAuth = headers.authorizarion
+  if (!jwtAuth) return ''  // headers can have no auth header
+
+  const jwtToken = wtAuth.split(' ')[1]
+  if (!jwtToken) return '' // auth header can contain only one part
+  
+  return jwtAuth
+}
 ```
 
 ## Installation
