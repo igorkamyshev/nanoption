@@ -1,0 +1,4 @@
+node_modules/
+.travis.yml
+yarn.lock
+**/__tests__/*
