@@ -13,7 +13,7 @@ function getJwtToken(executionContext) {
     .map(context => context.switchToHttp()) // context can have no http mod (e.g. WebSocket)
     .map(httpMod => httpMod.getRequest())   // context can have no http request
     .map(request => request.headers)        // request can have no headers
-    .map(headers => headers.authorizarion)  // headers can have no auth header
+    .map(headers => parseHeaders(headers))  // parseHeaders can return null
     .map(jwtAuth => jwtAuth.split(' ')[1])  // auth header can contain only one part
     .getOrElse('')
 
@@ -31,7 +31,7 @@ function getJwtToken(executionContext) {
   const headers = request.headers
   if (!headers) return ''  // request can have no headers
 
-  const jwtAuth = headers.authorizarion
+  const jwtAuth = parseHeaders(headers)
   if (!jwtAuth) return ''  // headers can have no auth header
 
   const jwtToken = wtAuth.split(' ')[1]
